@@ -1,0 +1,31 @@
+@import url("./assets/styles/fonts.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "iranyekan";
+  list-style: none;
+}
+
+:root {
+  --primaryColor: #6d28d9;
+  --secondaryColor: #ede9fe;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainGrey: #7c7c7c;
+  --mainSpacing: 0.1rem;
+  --mainTransition: all 0.3s linear;
+  --mainRed: #db2777;
+  --bodyColor: #f6f6f6;
+}
+
+body {
+  font-family: "iranyekan";
+  color: var(--mainBlack);
+  background: var(--mainWhite);
+  background-color: var(--bodyColor);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
