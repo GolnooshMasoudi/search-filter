@@ -1,6 +1,6 @@
-const btns = document.querySelectorAll(".btn");
+// const btns = document.querySelectorAll(".btn");
 const productsDOM = document.querySelector(".products-center");
-const storeProducts = document.querySelectorAll(".product");
+// const storeProducts = document.querySelectorAll(".product");
 const searchInput = document.querySelector("#search");
 
 let allProductsData = [];
@@ -23,21 +23,25 @@ function renderProducts(products, _filters) {
   const filteredProducts = products.filter((p) => {
     return p.title.toLowerCase().includes(_filters.searchItems.toLowerCase());
   });
-  // console.log(filteredProducts);
-  //   return filteredProducts;
   productsDOM.innerHTML = "";
-  filteredProducts.forEach((item) => {
-    const productDiv = document.createElement("div");
-    // const className = `product ${item.class}`;
-    productDiv.classList.add("product");
-    productDiv.innerHTML = `<div class="img-container">
-    <img src=${item.image} class="product-img" />
-    </div>
-    <div class="product-desc">
-      <p class="product-price">$ ${item.price}</p>
-      <p class="product-title">${item.title}</p>
-    </div>`;
-    productsDOM.appendChild(productDiv);
+  console.log(filteredProducts);
+  //render to DOM
+  filteredProducts.forEach((item, index) => {
+    //create
+    //content
+    //append to products
+    const productsDiv = document.createElement("div");
+    productsDiv.classList.add("product");
+    productsDiv.innerHTML = `
+      <div class="img-container">
+            <img src=${item.image} alt="p-${index}"/>
+      </div>
+      <div class="product-desc">
+            <p class="product-price">$ ${item.price}</p>
+            <p class="product-title">${item.title}</p>
+      </div>`;
+    //appen to DOM
+    productsDOM.appendChild(productsDiv);
   });
 }
 
@@ -47,13 +51,41 @@ searchInput.addEventListener("input", (e) => {
   renderProducts(allProductsData, filters);
 });
 
-// filter based on groups :
-btns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const filter = e.target.dataset.filter;
-    // e.target.classList.add("active");
-    // console.log(e.target.innerText);
-    filters.searchItems = filter;
-    renderProducts(allProductsData, filters);
-  });
-});
+// function renderProducts(products, _filters) {
+//   const filteredProducts = products.filter((p) => {
+//     return p.title.toLowerCase().includes(_filters.searchItems.toLowerCase());
+//   });
+//   // console.log(filteredProducts);
+//   //   return filteredProducts;
+//   productsDOM.innerHTML = "";
+//   filteredProducts.forEach((item) => {
+//     const productDiv = document.createElement("div");
+//     // const className = `product ${item.class}`;
+//     productDiv.classList.add("product");
+//     productDiv.innerHTML = `<div class="img-container">
+//     <img src=${item.image} class="product-img" />
+//     </div>
+//     <div class="product-desc">
+//       <p class="product-price">$ ${item.price}</p>
+//       <p class="product-title">${item.title}</p>
+//     </div>`;
+//     productsDOM.appendChild(productDiv);
+//   });
+// }
+
+// searchInput.addEventListener("input", (e) => {
+//   console.log(e.target.value);
+//   filters.searchItems = e.target.value;
+//   renderProducts(allProductsData, filters);
+// });
+
+// // filter based on groups :
+// btns.forEach((btn) => {
+//   btn.addEventListener("click", (e) => {
+//     const filter = e.target.dataset.filter;
+//     // e.target.classList.add("active");
+//     // console.log(e.target.innerText);
+//     filters.searchItems = filter;
+//     renderProducts(allProductsData, filters);
+//   });
+// });
